@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth, AuthContextProvider } from '@/hooks/useAuth';
 import { PinScreen } from './PinScreen';
 import { LoadingSpinner } from '@/components/common/LoadingSpinner';
 
@@ -7,7 +7,7 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-export function AuthProvider({ children }: AuthProviderProps) {
+function AuthGate({ children }: { children: ReactNode }) {
   const { isAuthenticated, hasPin, isLoading, setPin, verifyPin } = useAuth();
 
   if (isLoading) {
@@ -30,4 +30,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // Authenticated - show app
   return <>{children}</>;
+}
+
+export function AuthProvider({ children }: AuthProviderProps) {
+  return (
+    <AuthContextProvider>
+      <AuthGate>{children}</AuthGate>
+    </AuthContextProvider>
+  );
 }
