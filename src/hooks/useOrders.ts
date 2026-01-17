@@ -77,8 +77,15 @@ export function useUpdateOrderStatus() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({ id, status }: { id: string; status: 'pending' | 'completed' }): Promise<void> => {
-      await api.put(`orders/${id}`, { order_status: status }); // Changed from status
+    mutationFn: async ({ id, status, price }: { id: string; status: 'pending' | 'completed'; price?: number }): Promise<void> => {
+      const updateData: Record<string, any> = { order_status: status };
+      
+      // When marking as completed, set advance_payment = price (full payment received)
+      if (status === 'completed' && price !== undefined) {
+        updateData.advance_payment = price;
+      }
+      
+      await api.put(`orders/${id}`, updateData);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['orders'], refetchType: 'all' });
