@@ -54,13 +54,11 @@ export function useCreateOrder() {
       const response = await api.post('orders', {
         ...data,
         order_number: orderNumber,
-        order_status: 'pending', // Changed from status
+        order_status: 'pending',
       });
 
-      // Fetch the full order to get nested customer data if needed, 
-      // or assume the response/local data is enough
-      const newOrder = await api.get(`orders/${response.id}`);
-      return newOrder as Order;
+      // Return the response directly - it should contain the created order
+      return response as Order;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['orders'], refetchType: 'all' });
