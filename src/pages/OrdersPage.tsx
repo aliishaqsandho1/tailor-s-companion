@@ -35,7 +35,7 @@ export default function OrdersPage() {
   };
 
   const handleStatusChange = async (order: Order, status: 'pending' | 'completed') => {
-    await updateStatus.mutateAsync({ id: order.id, status });
+    await updateStatus.mutateAsync({ id: order.id, status, price: order.price || 0 });
   };
 
   const handleDelete = (order: Order) => {
