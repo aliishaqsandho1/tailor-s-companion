@@ -36,7 +36,7 @@ export function OrderCard({ order, onStatusChange, onDelete }: OrderCardProps) {
     }).format(amount);
   };
 
-  const isPending = order.status === 'pending';
+  const isPending = order.order_status === 'pending';
   const remainingAmount = (order.price || 0) - (order.advance_payment || 0);
 
   return (

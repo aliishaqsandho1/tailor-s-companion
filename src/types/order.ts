@@ -6,7 +6,7 @@ export interface Order {
   fabric_details?: string | null;
   price?: number | null;
   advance_payment?: number | null;
-  status: 'pending' | 'completed';
+  order_status: 'pending' | 'completed';
   delivery_date?: string | null;
   created_at: string;
   updated_at: string;
