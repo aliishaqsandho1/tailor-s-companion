@@ -63,7 +63,7 @@ export function useCreateOrder() {
       return newOrder as Order;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['orders'] });
+      queryClient.invalidateQueries({ queryKey: ['orders'], refetchType: 'all' });
       toast.success('آرڈر کامیابی سے بن گیا');
     },
     onError: (error) => {
@@ -81,9 +81,8 @@ export function useUpdateOrderStatus() {
       await api.put(`orders/${id}`, { order_status: status }); // Changed from status
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['orders'] });
-      const message = 'آرڈر کی حیثیت تبدیل ہو گئی';
-      toast.success(message);
+      queryClient.invalidateQueries({ queryKey: ['orders'], refetchType: 'all' });
+      toast.success('آرڈر کی حیثیت تبدیل ہو گئی');
     },
     onError: (error) => {
       console.error('Error updating order status:', error);
@@ -100,7 +99,7 @@ export function useDeleteOrder() {
       await api.delete(`orders/${id}`);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['orders'] });
+      queryClient.invalidateQueries({ queryKey: ['orders'], refetchType: 'all' });
       toast.success('آرڈر کامیابی سے حذف ہو گیا');
     },
     onError: (error) => {
