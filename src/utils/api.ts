@@ -2,10 +2,17 @@ export const API_BASE_URL = import.meta.env.VITE_API_URL || '';
 
 async function handleResponse(response: Response) {
     if (!response.ok) {
-        const error = await response.json();
+        const text = await response.text();
+        const error = text ? JSON.parse(text) : { message: 'API request failed' };
         throw new Error(error.message || 'API request failed');
     }
-    return response.json();
+    
+    // Handle empty responses (common for PUT/DELETE operations)
+    const text = await response.text();
+    if (!text) {
+        return { success: true };
+    }
+    return JSON.parse(text);
 }
 
 export const api = {
