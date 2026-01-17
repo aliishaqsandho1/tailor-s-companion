@@ -1,92 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
+/* Tailor App Design System - Professional Urdu RTL Interface */
 
 @layer base {
   :root {
-    --background: 35 30% 97%;
-    --foreground: 180 25% 15%;
-
+    /* Primary: Deep Teal - Professional & Trustworthy */
+    --primary: 168 65% 28%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Background: Warm cream tones */
+    --background: 40 40% 97%;
+    --foreground: 220 25% 15%;
+    
+    /* Cards: Clean white with subtle warmth */
     --card: 0 0% 100%;
-    --card-foreground: 180 25% 15%;
-
+    --card-foreground: 220 25% 15%;
+    
+    /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 180 25% 15%;
-
-    --primary: 174 60% 30%;
-    --primary-foreground: 35 30% 97%;
-
-    --secondary: 35 40% 92%;
-    --secondary-foreground: 180 25% 15%;
-
-    --muted: 35 20% 90%;
-    --muted-foreground: 180 15% 40%;
-
-    --accent: 42 85% 55%;
-    --accent-foreground: 180 25% 15%;
-
-    --destructive: 0 70% 50%;
+    --popover-foreground: 220 25% 15%;
+    
+    /* Secondary: Warm amber/gold accent */
+    --secondary: 38 90% 50%;
+    --secondary-foreground: 220 25% 15%;
+    
+    /* Muted: Soft gray with warmth */
+    --muted: 40 20% 92%;
+    --muted-foreground: 220 15% 45%;
+    
+    /* Accent: Golden amber */
+    --accent: 38 80% 55%;
+    --accent-foreground: 220 25% 15%;
+    
+    /* Destructive: Warm red */
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 180 15% 85%;
-    --input: 180 15% 85%;
-    --ring: 174 60% 30%;
-
+    
+    /* Success: Green for completed */
+    --success: 142 70% 40%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Pending: Amber warning */
+    --pending: 38 90% 50%;
+    --pending-foreground: 220 25% 15%;
+    
+    /* Border & Input */
+    --border: 40 25% 85%;
+    --input: 40 25% 85%;
+    --ring: 168 65% 28%;
+    
     --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-
-    /* Custom tokens for tailor app */
-    --gold: 42 85% 55%;
-    --gold-dark: 38 70% 45%;
-    --teal-light: 174 40% 45%;
-    --cream: 35 40% 95%;
-    --section-header: 174 50% 25%;
-  }
-
-  .dark {
-    --background: 180 25% 10%;
-    --foreground: 35 30% 95%;
-
-    --card: 180 20% 15%;
-    --card-foreground: 35 30% 95%;
-
-    --popover: 180 20% 15%;
-    --popover-foreground: 35 30% 95%;
-
-    --primary: 174 50% 45%;
-    --primary-foreground: 180 25% 10%;
-
-    --secondary: 180 20% 20%;
-    --secondary-foreground: 35 30% 95%;
-
-    --muted: 180 15% 25%;
-    --muted-foreground: 35 20% 70%;
-
-    --accent: 42 85% 55%;
-    --accent-foreground: 180 25% 10%;
-
-    --destructive: 0 60% 45%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 180 15% 25%;
-    --input: 180 15% 25%;
-    --ring: 174 50% 45%;
-
-    --gold: 42 80% 50%;
-    --gold-dark: 38 65% 40%;
-    --teal-light: 174 35% 40%;
-    --cream: 35 30% 20%;
-    --section-header: 174 45% 35%;
+    
+    /* Sidebar */
+    --sidebar-background: 168 65% 25%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 38 90% 55%;
+    --sidebar-primary-foreground: 220 25% 15%;
+    --sidebar-accent: 168 50% 35%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 168 50% 35%;
+    --sidebar-ring: 38 90% 55%;
+    
+    /* Custom shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(220 25% 15% / 0.08);
+    --shadow-card: 0 2px 12px -2px hsl(220 25% 15% / 0.06);
+    --shadow-elevated: 0 8px 30px -4px hsl(220 25% 15% / 0.12);
   }
 }
 
@@ -100,46 +82,68 @@
   }
 
   body {
-    @apply bg-background text-foreground font-urdu antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Noto Sans Arabic', 'Noto Nastaliq Urdu', system-ui, sans-serif;
+  }
+
+  /* Urdu Heading Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', serif;
+    font-weight: 600;
+  }
+
+  /* Input styling for RTL */
+  input, textarea, select {
+    text-align: right;
+    direction: rtl;
+  }
+
+  input[type="number"] {
+    text-align: left;
+    direction: ltr;
   }
 }
 
 @layer components {
-  .section-card {
-    @apply bg-card rounded-xl border border-border p-5 shadow-sm;
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-[var(--shadow-card)];
   }
 
-  .section-header {
-    @apply text-lg font-semibold text-primary border-b-2 border-accent pb-2 mb-4;
+  /* Elevated card */
+  .elevated-card {
+    @apply bg-card border border-border shadow-[var(--shadow-elevated)] transition-shadow duration-300;
   }
 
-  .measurement-input {
-    @apply h-12 text-lg bg-secondary/50 border-border focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-lg text-right;
+  .elevated-card:hover {
+    @apply shadow-[var(--shadow-soft)];
   }
 
-  .customer-card {
-    @apply bg-card border border-border rounded-xl p-4 hover:shadow-md hover:border-primary/30 transition-all duration-200 cursor-pointer;
+  /* Status badges */
+  .status-pending {
+    @apply bg-pending/10 text-pending border border-pending/30;
   }
 
-  .customer-card-active {
-    @apply border-primary shadow-md bg-primary/5;
+  .status-completed {
+    @apply bg-success/10 text-success border border-success/30;
   }
 
-  .gold-accent {
-    @apply text-[hsl(var(--accent))];
+  /* Measurement field styling */
+  .measurement-field {
+    @apply bg-muted/50 border border-border rounded-lg p-3 transition-all duration-200;
   }
 
+  .measurement-field:focus-within {
+    @apply bg-card border-primary/50 shadow-[0_0_0_3px_hsl(168_65%_28%_/_0.1)];
+  }
+
+  /* Gradient header */
   .gradient-header {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--teal-light)) 100%);
+    @apply bg-gradient-to-l from-primary via-primary to-[hsl(168,65%,22%)];
   }
 
-  .gold-border {
-    border-color: hsl(var(--accent));
-  }
-}
-
-@layer utilities {
-  .font-urdu {
-    font-family: 'Noto Nastaliq Urdu', serif;
+  /* Golden accent button */
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg shadow-accent/25;
   }
 }
